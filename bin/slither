@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var Application
+  , isProduction = process.argv.indexOf('--prod') !== -1;
+
+if (isProduction) {
+  Application = new (require('../lib/bootstrap'));
+} else {
+  require('coffee-script/register'), Application = new (require('../src/bootstrap'));
+}
